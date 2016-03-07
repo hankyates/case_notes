@@ -7,7 +7,7 @@
     "clean": "rm -rf build/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run clean; mkdir build; npm run browserify; npm run sass; npm run static",
-    "browserify": "browserify -t [ babelify --presets [ react ] ] src/index.js -o build/bundle.js --debug",
+    "browserify": "browserify -t [ babelify --presets [ react es2015 ] ] src/index.js -o build/bundle.js --debug",
     "static": "cp static/* build/",
     "watch": "npm run watchJs & npm run watchSass & npm run watchStatic & npm run livereload",
     "watchJs": "watch 'npm run browserify' src/",
@@ -15,7 +15,7 @@
     "watchStatic": "watch 'npm run static' static/",
     "sass": "node-sass scss/styles.scss build/styles.css",
     "livereload": "livereload build/",
-    "serve": "python -m SimpleHTTPServer"
+    "serve": "cd build && python -m SimpleHTTPServer"
   },
   "author": "",
   "license": "ISC",
@@ -26,11 +26,13 @@
     "bourbon": "^5.0.0-beta.2",
     "bourbon-neat": "^1.7.4",
     "browserify": "^12.0.1",
+    "connect": "^3.4.1",
     "lodash": "^3.10.1",
     "node-sass": "^3.4.2",
     "ramda": "^0.18.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+    "react-router": "^2.0.0",
     "watch": "^0.16.0"
   }
 }
